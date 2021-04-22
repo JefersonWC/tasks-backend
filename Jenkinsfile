@@ -6,5 +6,10 @@ pipeline {
                 sh 'mvn clean package -DskipTests=true' //Limpa empacota mas nao executa o testes com -DskipTests=true
             }
         }
+        stage ('Unit Tests') {
+            steps {
+                sh 'mvn test'
+            }
+        }
     }
 }
