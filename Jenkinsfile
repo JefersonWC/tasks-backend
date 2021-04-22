@@ -34,5 +34,11 @@ pipeline {
                deploy adapters: [tomcat6(credentialsId: 'tomcat_login', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks-backend', war: 'target/surefire-reports/*.xml' 
             }
         }
+        stage ('API Test') {
+            steps {
+                git 'https://github.com/JefersonWC/tasks-api-test.git'
+                bat 'mvn test' 
+            }
+        }
     }
 }
