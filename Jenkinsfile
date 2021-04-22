@@ -42,5 +42,14 @@ pipeline {
                 }
             }
         }
+        stage ('Deploy Frontend') {
+            steps {
+                ls('frontend') {
+                git 'https://github.com/JefersonWC/tasks-frontend' 
+                bat 'mvn clean package'
+                deploy adapters: [tomcat6(credentialsId: 'tomcat_login', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks', war: 'target/tasks.war'
+                }   
+            }
+        }
     }
 }
