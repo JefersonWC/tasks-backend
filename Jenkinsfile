@@ -29,6 +29,10 @@ pipeline {
                 }
             }
         }
+        stage ('Deploy Backend') {
+            steps {
+               deploy adapters: [tomcat6(credentialsId: 'tomcat_login', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks-backend', war: 'target/surefire-reports/*.xml' 
+            }
+        }
     }
 }
-
