@@ -36,8 +36,10 @@ pipeline {
         }
         stage ('API Test') {
             steps {
+                ls('api-test') {
                 git 'https://github.com/JefersonWC/tasks-api-test.git'
                 bat 'mvn test' 
+                }
             }
         }
     }
