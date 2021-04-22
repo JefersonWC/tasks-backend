@@ -1,9 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage ('Just Test') {
+        stage ('Build Backend') {
             steps {
-                sh 'echo deu certo'
+                sh 'mvn clean package -DskipTests=true' //Limpa empacota mas nao executa o testes com -DskipTests=true
             }
         }
     }
